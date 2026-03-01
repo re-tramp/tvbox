@@ -1,0 +1,21 @@
+# This workflow warns and then closes issues and PRs that have had no activity for a specified amount of time.
+#
+# You can adjust the behavior by modifying this file.
+# For more information, see:
+# https://github.com/actions/stale
+name: generate tvbox confg automaticlly
+
+on:
+  schedule:
+  - cron: '0 0 * * *'
+  workflow_dispatch:
+
+jobs:
+  work:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: run
+      run: |
+        docker run --rm -e mirror=5 -e jar_suffix=css -e token=${{secrets.TOKEN}} -e username=${{vars.NAME}} -e url=${{vars.URLS}}  2011820123/tvbox
